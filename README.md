@@ -7,7 +7,7 @@ This repository supplies the code to reproduce the figures in the manuscript and
 
 The code relies on functions in the [`rwrfhydro`](https://github.com/NCAR/rwrfhydro) R package.  
 
-The ipython notebookd, [all_figures.ipynb](all_figures.ipynb), provides an entry point including installing `rwrfhydro` and showing the codes called for each figures above the figure itself.
+The ipython notebook, [all_figures.ipynb](all_figures.ipynb), provides the best entry point including installing `rwrfhydro` and showing the codes called for each figure above the figure itself.
 
 
 
