@@ -9,5 +9,8 @@ The code relies on functions in the [`rwrfhydro`](https://github.com/NCAR/rwrfhy
 
 The ipython notebook, [all_figures.ipynb](all_figures.ipynb), provides the best entry point including installing `rwrfhydro` and showing the codes called for each figure above the figure itself.
 
+The code here was written prior to several major changes in R (new major version) and ggplot2. As of this writing the software has not been updated but it maybe in the future. For now, the requirements for reproducibility are closely approximated by:
+```
+```
 
 
