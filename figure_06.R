@@ -1,5 +1,3 @@
-library(rwrfhydro); options(warn=1)
-
 fig_supp_table = 'figure'
 figure_number = '06'
 tag = ''
@@ -56,6 +54,5 @@ ff = figure +
         alpha = guide_legend(order = 2),        
         linetype = guide_legend(order = 3),
         color=FALSE)
-ff
 
 ggsave(file=figure_name, figure)
