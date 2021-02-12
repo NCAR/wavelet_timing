@@ -1,3 +1,5 @@
+library(rwrfhydro)
+options(warn=1)
 
 fig_supp_table = 'figure'
 figure_number = '03'
@@ -24,5 +26,5 @@ wt_event = WtEventTiming(
   rm_chunks_warn=FALSE
 )
 
-figure <- step2_figure(wt_event, ylab_spacer=.08)
+figure = step2_figure(wt_event, ylab_spacer=.08)
 ggsave(file=figure_name, figure)

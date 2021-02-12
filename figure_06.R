@@ -30,7 +30,7 @@ clust_numbers = unique(sort(maxs$period_clusters))
 clust_fill_colors = c(NA, rwrfhydro:::cluster_palette()(length(clust_numbers)))
 names(clust_fill_colors) = c('None', clust_numbers)
 
-ff = figure +
+figure = figure +
     geom_vline(
         data=maxs,
         size=.5,
