@@ -20,7 +20,8 @@ wt_event = WtEventTiming(
         'NWM v1.2'=data$`NWM v1.2`
     ),
     min_ts_length=256,
-    max.scale=256
+    max.scale=256,
+    rm_chunks_warn=FALSE    
 )
 
 we_stats = we_hydro_stats(wt_event)
@@ -48,5 +49,5 @@ cols = c('.id', 'period', 'obs_power_corr_tavg', 'n_clusters',
          'pct_hits', 'median_time_err')
 new_cols = c('NWM Version', 'Characteristic Timescale (hr)', 'Avg WT Power', 'Number of Clusters',
              '% Hits',  'Median Timing Error (hr)')
-the_table = head(setnames(setcolorder(max_stats[, ..cols], cols), cols, new_cols), 9)
+the_table = head(setnames(setcolorder(max_stats[, ..cols], cols), cols, new_cols), 6)
 the_table %>% htmlTable(rnames=FALSE)

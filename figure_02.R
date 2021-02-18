@@ -1,3 +1,5 @@
+library(rwrfhydro)
+options(warn=1)
 
 fig_supp_table = 'figure'
 figure_number = '02'
@@ -6,7 +8,7 @@ location = 'onion_creek'
 time_period = 'one_event'
 source('mk_file_name.R')
 
-data <- WtGetEventData(location, time_period)
+data = WtGetEventData(location, time_period)
 
 wt_event = WtEventTiming(
   POSIXct=data$POSIXct,
@@ -17,5 +19,6 @@ wt_event = WtEventTiming(
   rm_chunks_warn=FALSE
 )
 
-figure <- step1_figure(wt_event)
+figure = step1_figure(wt_event, cluster_maxima=TRUE)
+
 ggsave(file=figure_name, figure)

@@ -11,7 +11,7 @@ source('mk_file_name.R')
 data = WtGetEventData(location, time_period)
 
 offsetIt = 5 # hours
-offstart = rep(NA, times = offsetIt)
+offstart = rep(data$q_cms_obs[1], times = offsetIt)
 pairStart = 1
 pairEnd   = dim(data)[1] - offsetIt
 offend = data$q_cms_obs[pairStart:pairEnd]
@@ -26,5 +26,6 @@ wt_event = WtEventTiming(
   rm_chunks_warn=FALSE
 )
 
-figure = step2_figure(wt_event, ylab_spacer=.08)
+figure = step2_figure(wt_event, ylab_spacer=.08, cluster_maxima=TRUE)
+
 ggsave(file=figure_name, figure)

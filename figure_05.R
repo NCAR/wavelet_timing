@@ -1,9 +1,11 @@
+library(rwrfhydro)
+options(warn=1)
 
 fig_supp_table = 'figure'
 figure_number = '05'
 tag = ''
-location <- 'pemigewasset_river'
-time_period <- 'small_event'
+location = 'pemigewasset_river'
+time_period = 'small_event'
 source('mk_file_name.R')
 
 data = WtGetEventData(location, time_period)
@@ -17,5 +19,5 @@ wt_event = WtEventTiming(
   rm_chunks_warn=FALSE
 )
 
-figure <- step2_figure(wt_event, ylab_spacer=.08)
+figure = step2_figure(wt_event, ylab_spacer=.08, cluster_maxima=TRUE)
 ggsave(file=figure_name, figure)

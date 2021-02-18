@@ -1,29 +1,50 @@
-library(data.table)
+library(rwrfhydro)
 library(ggplot2)
+options(warn=1)
 
 fig_supp_table = 'figure'
 figure_number = '09'
 tag = ''
-location = 'taylor_river'
-time_period = 'one_season'
+location = 'onion_creek'
+time_period = 'five_years'
 source('mk_file_name.R')
 
 data <- WtGetEventData(location, time_period)
 
-setnames(data, 'q_cms_obs', 'obs')
+wt_event = WtEventTiming(
+  POSIXct=data$POSIXct,
+  obs=data$q_cms_obs,
+  mod=list(
+    'NWM v1.0'=data$`NWM v1.0`,
+    'NWM v1.1'=data$`NWM v1.1`,
+    'NWM v1.2'=data$`NWM v1.2`),
+  min_ts_length=256,
+  max.scale=256,
+  rm_chunks_warn=FALSE
+)
 
-measure_vars = c('obs', 'NWM v1.2')
-plot_data = melt(data, id.vars=c('POSIXct'), measure.vars=measure_vars)
-streamflow_colors = RColorBrewer::brewer.pal('Paired', n=3)[1:2]
-names(streamflow_colors) = rev(unique(plot_data$variable))
-plot_data$variable = factor(plot_data$variable, levels=rev(measure_vars))
-      
-plot =
-  ggplot(plot_data) +
-  geom_line(aes(x=POSIXct, y=value, color=variable), size=1.5) +
-  scale_color_manual(values=streamflow_colors, name=NULL) +
-  scale_y_log10(name='Streamflow (cms)') +
-  scale_x_datetime(name=NULL, date_labels="%d %h\n%Y") + 
-  theme_bw()
+we_stats <- we_hydro_stats(wt_event)
 
-ggsave(file=figure_name, plot)
+figure <- event_cluster_timing_summary_by_period(
+    we_stats,
+    wt_event=wt_event,
+    n_period=3, 
+    distiller_pal='Greys', 
+    timing_stat='cluster_max',
+    box_fill='grey90',
+    signif_threshold=1 )
+
+ggsave(
+    file=figure_name,
+    figure$ggplot + guides(colour = FALSE))
+
+for(tt in c(17.5, 29.5, 58.9)) {
+    print(tt)
+    for(vv in c('NWM v1.0', 'NWM v1.1', 'NWM v1.2')) {
+        print(vv)
+        print(paste0('hits: ',
+            we_stats[[vv]]$xwt$event_timing$cluster_max[ abs(period - tt) < .1 ][ xwt_signif == TRUE, .(n=.N) ]$n))
+        print(paste0('misses: ',
+            we_stats[[vv]]$xwt$event_timing$cluster_max[ abs(period - tt) < .1 ][ xwt_signif == FALSE, .(n=.N) ]$n))
+    }
+}
