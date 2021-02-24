@@ -1,16 +1,9 @@
 # Wavelet Timing:
 
-Codes to reproduce "A Wavelet-Based Approach to Streamflow Event Identification and Modeled Timing Error Evaluation"  
-By  E. Towler, J.L. McCreight  
+Codes to reproduce the (data-driven) figures and tables in our manuscript 
 
-This repository supplies the code to reproduce the figures in the manuscript and the supplemental.  
+``Towler, E. and McCreight, J. L.: A Wavelet-Based Approach to Streamflow Event Identification and Modeled Timing Error Evaluation, Hydrol. Earth Syst. Sci. Discuss. [preprint], https://doi.org/10.5194/hess-2020-323, in review, 2020.``
 
-The code relies on functions in the [`rwrfhydro`](https://github.com/NCAR/rwrfhydro) R package.  
+[https://doi.org/10.5194/hess-2020-323](https://doi.org/10.5194/hess-2020-323)
 
-The ipython notebook, [all_figures.ipynb](all_figures.ipynb), provides the best entry point including installing `rwrfhydro` and showing the codes called for each figure above the figure itself.
-
-The code here was written prior to several major changes in R (new major version) and ggplot2. As of this writing the software has not been updated but it maybe in the future. For now, the requirements for reproducibility are closely approximated by:
-```
-```
-
-
+The ipython notebook, [all_figures.ipynb](all_figures.ipynb), provides the best entry point. The code was written prior to several major changes in R including a new major R version and changes to ggplot2. The code has not (yet) been adapted to these recent changes. The notebook prints `sessionInfo()` to document the dependencies used to run this code. Please note these dependencies. 

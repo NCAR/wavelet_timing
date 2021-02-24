@@ -9,7 +9,7 @@ location = 'onion_creek'
 time_period = 'five_years'
 source('mk_file_name.R')
 
-data <- WtGetEventData(location, time_period)
+data = WtGetEventData(location, time_period)
 
 wt_event = WtEventTiming(
   POSIXct=data$POSIXct,
@@ -23,9 +23,9 @@ wt_event = WtEventTiming(
   rm_chunks_warn=FALSE
 )
 
-we_stats <- we_hydro_stats(wt_event)
+we_stats = we_hydro_stats(wt_event)
 
-figure <- event_cluster_timing_summary_by_period(
+figure = event_cluster_timing_summary_by_period(
     we_stats,
     wt_event=wt_event,
     n_period=3, 
@@ -34,9 +34,8 @@ figure <- event_cluster_timing_summary_by_period(
     box_fill='grey90',
     signif_threshold=1 )
 
-ggsave(
-    file=figure_name,
-    figure$ggplot + guides(colour = FALSE))
+figure = figure$ggplot + guides(colour = FALSE)
+ggsave(file=figure_name, figure)
 
 for(tt in c(17.5, 29.5, 58.9)) {
     print(tt)

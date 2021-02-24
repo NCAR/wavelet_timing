@@ -50,4 +50,4 @@ cols = c('.id', 'period', 'obs_power_corr_tavg', 'n_clusters',
 new_cols = c('NWM Version', 'Characteristic Timescale (hr)', 'Avg WT Power', 'Number of Clusters',
              '% Hits',  'Median Timing Error (hr)')
 the_table = head(setnames(setcolorder(max_stats[, ..cols], cols), cols, new_cols), 6)
-the_table %>% htmlTable(rnames=FALSE)
+output_table = the_table %>% htmlTable(rnames=FALSE)

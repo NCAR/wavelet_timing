@@ -1,6 +1,7 @@
 library(rwrfhydro)
 library(data.table)
-library(htmlTable)
+##library(htmlTable)
+library(expss)
 library(magrittr)
 options(warn=1)
 
@@ -39,5 +40,5 @@ new_cols = c('Characteristic Timescale (hr)', 'Avg WT Power', 'Number of Cluster
 the_table = setnames(
     setcolorder(max_stats[, ..cols], cols),
     cols, new_cols)
-the_table %>% htmlTable(rnames=FALSE)
+output_table = the_table %>% htmlTable(rnames=FALSE)
 

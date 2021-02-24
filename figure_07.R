@@ -20,4 +20,4 @@ wt_event = WtEventTiming(
 )
 
 figure = step2_figure(wt_event, ylab_spacer=.08)
-ggsave(file=figure_name, figure)
+ggsave(file=figure_name, figure, height=7, width=7)

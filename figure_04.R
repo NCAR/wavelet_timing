@@ -20,4 +20,4 @@ wt_event = WtEventTiming(
 )
 
 figure = step1_figure(wt_event, cluster_maxima=TRUE)
-ggsave(file=figure_name, figure)
+ggsave(file=figure_name, figure, height=7, width=7)

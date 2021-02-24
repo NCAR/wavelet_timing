@@ -36,4 +36,4 @@ cols = c('period', 'obs_power_corr_tavg', 'period_clusters', 'time_err_2',
 new_cols = c('Characteristic Timescale (hr)', 'Avg WT Power', 'Cluster', 'Timing Error (hr)',
              'Hit?', 'Total Number of Clusters', '% Hits', 'Avg Timing Error (hr)')
 the_table = head(setnames(setcolorder(max_stats[, ..cols], cols), cols, new_cols), 12)
-the_table %>% htmlTable(rnames=FALSE)
+output_table = the_table %>% htmlTable(rnames=FALSE)

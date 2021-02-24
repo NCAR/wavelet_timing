@@ -130,19 +130,17 @@ box_fill = 'grey80'
 the_plot =
     the_plot +
     scale_x_discrete(name='Timescale (hr)',
-                     labels=as_labeller(period_facet_labeller))
-
-the_plot =
-    the_plot +
+                     labels=as_labeller(period_facet_labeller)) +
     scale_y_continuous(name='Max peak (cms)') +
     theme_bw(base_size=base_size)
-out_plot_stats = plot_stats
-out_plot_stats$per_fact=NULL
-invisible(list(ggplot=the_plot, plot_stats=out_plot_stats))
 
-the_plot
+#out_plot_stats = plot_stats
+#out_plot_stats$per_fact=NULL
+#invisible(list(ggplot=the_plot, plot_stats=out_plot_stats))
+
+figure = the_plot
 ggsave(
     file=paste0(figure_prefix,".png"),
-    the_plot,
+    figure,
     height=7,
     width=7)

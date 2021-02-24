@@ -19,7 +19,7 @@ streamflow_colors = RColorBrewer::brewer.pal('Paired', n=3)[1:2]
 names(streamflow_colors) = rev(unique(plot_data$variable))
 plot_data$variable = factor(plot_data$variable, levels=rev(measure_vars))
       
-plot =
+figure =
   ggplot(plot_data) +
   geom_line(aes(x=POSIXct, y=value, color=variable), size=1.5) +
   scale_color_manual(values=streamflow_colors, name=NULL) +
@@ -27,4 +27,4 @@ plot =
   scale_x_datetime(name=NULL, date_labels="%d %h\n%Y") + 
   theme_bw()
 
-ggsave(file=figure_name, plot)
+ggsave(file=figure_name, figure)

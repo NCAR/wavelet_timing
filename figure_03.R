@@ -26,6 +26,7 @@ wt_event = WtEventTiming(
   rm_chunks_warn=FALSE
 )
 
-figure = step2_figure(wt_event, ylab_spacer=.08, cluster_maxima=TRUE)
+figure = step2_figure(
+    wt_event, ylab_spacer=.08, cluster_maxima=TRUE)
 
-ggsave(file=figure_name, figure)
+ggsave(file=figure_name, figure, height=7, width=7)

@@ -46,7 +46,8 @@ figure = event_cluster_timing_summary_by_period(
     signif_threshold=1
 )
 
-ggsave(file=figure_name, figure$ggplot + guides(colour = FALSE))
+figure = figure$ggplot + guides(colour = FALSE)
+ggsave(file=figure_name, figure)
 
 for(tt in c(17.5, 27.8, 31.2)) {
     print(tt)
